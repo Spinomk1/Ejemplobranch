@@ -66,7 +66,35 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+
+    // Método para procesar los datos del formulario
+  void _processFormData(String name, String email) {
+    // Aquí puedes hacer lo que necesites con los datos
+    // Por ejemplo, imprimirlos en la consola o enviarlos a un servidor
+    print('Name: $name');
+    print('Email: $email');
+    // Puedes también mostrar un dialogo o cualquier otra acción que desees realizar
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Form Submitted'),
+          content: Text('Name: $name\nEmail: $email'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
